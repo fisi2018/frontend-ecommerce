@@ -1,63 +1,13 @@
 import Link from "next/link";
 import { useState } from "react";
-
+import {API} from "./config";
 export default function CardProduct(props){
     
-   /* const agregarProducto=()=>{
-        if(localStorage.getItem("basket")){
-            const num=parseInt( localStorage.getItem("basket"))+1;
-            localStorage.setItem("basket",num);
-            let list= JSON.parse(localStorage.getItem("products")) ;
-            let flag=false;
-            let index=0;
-            for(let obj in list){
-                console.log(list[obj]._id);
-                if(list[obj]._id===props.obj._id){
-                    (list[obj].count)?(
-                        list[obj]={
-                            ...list[obj],
-                            count:list[obj].count+1
-                        }
-                    ):(
-                        list[obj]={
-                            ...list[obj],
-                            count:2
-                        }
-                    );
-                    flag=true;
-                }
-                index++;
-            }
-            
-            if(!flag){
-                
-                list={
-                    ...list,
-                    [index]:props.obj
-                }
-                localStorage.setItem("products",JSON.stringify(list));
-            }
-            else{
-            
-                localStorage.setItem("products",JSON.stringify(list));
-
-            }
-        }
-        else{
-            let list={};
-            list={
-                0:props.obj
-            };
-            localStorage.setItem("products",JSON.stringify(list));
-            localStorage.setItem("basket",1);
-        }
-        const productos=parseInt(localStorage.getItem("basket"));
-        props.sendData(productos);
-    }*/
+   
     return(
         <div className="card-producto">
             <h3>{props.name}</h3>
-            <img src={`http://localhost:4000/api/producto/img/${props._id}`} alt={props.name}/>
+            <img src={`${API}/producto/img/${props._id}`} alt={props.name}/>
             <p className="mayor">${props.priceMayor}</p>
             <p>${props.priceMenor}</p>
             <Link href={`/products/[id]`} as={`/products/${props._id}`} >
