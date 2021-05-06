@@ -1,6 +1,7 @@
 import Layout from "../components/layout";
 import Card from "../components/card";
 import {API} from "../components/config";
+
 const axios=require("axios");
 export default function Home({tables}){
     return(
@@ -18,6 +19,7 @@ export default function Home({tables}){
                     )
                 })
             }
+            
             </section>
             <style jsx>
                 {`

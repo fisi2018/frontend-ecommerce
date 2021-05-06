@@ -1,22 +1,59 @@
 import Footer from "./footer";
 import Header from "./header";
+import { useRouter } from "next/router";
 import Head from "next/head";
+import Loader from "../tools/Loader";
+import {useEffect, useState} from "react";
 
 export default function Layout({children}){
+    const router=useRouter();
+    const [loading,setLoading]=useState(false);
+    const [error, setError] = useState(false)
+    useEffect(()=>{
+        const handleRoute=(url)=>{
+            setLoading(true);
+        };
+        const handleRouteComplete=()=>{
+            setLoading(false);
+        };
+        const handleError=()=>{
+            setError(true);
+        }
+
+        router.events.on("routeChangeStart",handleRoute);
+        router.events.on('routeChangeComplete', handleRouteComplete);
+        router.events.on("routeChangeError",handleError);
+
+        return ()=>{
+            router.events.off("routeChangeStart",handleRoute);
+            router.events.off("routeChangeComplete",handleRouteComplete);
+            router.events.off("routeChangeError",handleError);
+        }
+    },[]);
+    
     return(
         <div>
             <Head>
-                <title>MyEcommerce</title>
+                <title>Importadora A&F</title>
                 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
                  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;900&display=swap" rel="stylesheet"/>
             </Head>
             <Header  />
-            <main>
-                {children}
+            <main className={`${loading && `isLoading`}`} >
+                {loading ? 
+                    <Loader/> 
+                    :children}
+                    {error && <h2>HA OCURRIDO UN ERROR: INTENTELO DE NUEVO</h2> }
             </main>
             <Footer/>
             <style jsx global>
                 {`
+                
+                .isLoading{
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                }
                 html,body{
                     box-sizing:border-box;
                     margin:0;

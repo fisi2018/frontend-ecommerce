@@ -4,7 +4,7 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 export default function Footer(){
     return(
         <footer>
-            <p>© 2020 EMPRESA, Inc. All rights reserved.</p>
+            <p>© 2021 Importadora A&F. All rights reserved.</p>
             <nav>
 
             <a href="https://www.facebook.com" target="_blank">

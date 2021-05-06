@@ -195,7 +195,7 @@ export default function Header(){
     return(
         <header>
             <div>
-                <h1>Nombre de Empresa</h1>
+                <h1>Importadora Fura Ltda</h1>
                 <button onClick={showList}>
                 <Badge badgeContent={basket} color="error">
 
@@ -209,8 +209,8 @@ export default function Header(){
                 </aside>
             </div>
             <nav className="links-list">
-                <Link href="/">
-                <a >Inicio</a>
+                <Link href="/" >
+                <a  >Inicio</a>
                 </Link>
                 <Link href="/about">
                 <a className="about-element" >Acerca de nosotros</a></Link>
@@ -261,7 +261,8 @@ export default function Header(){
                 h1{
                     color:white;
                     text-align:center;
-                    font-weight:lighter;
+                    font-weight:200;
+                    
                 }
                 div{
                     padding:2rem;

@@ -296,6 +296,17 @@ export default function Product({producto}){
                 height:auto;
                 border-radius:10px;
             }
+            @media screen and (max-width:480px){
+                img{
+                    width:100%;
+                    border-radius:10px 10px 0 0;
+                    min-width:100%;
+                }
+                div{
+                    padding-top:0;
+                    border-radius: 10px 10px 0 0;
+                }
+            }
             `}</style>
         </Layout>
     )
@@ -312,7 +323,7 @@ export async function getServerSidePaths(){
     });
     return{
         paths,
-        fallback:true
+        isFallback:true
     }
 }
 

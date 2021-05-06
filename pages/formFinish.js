@@ -4,7 +4,11 @@ import Link from "next/link";
 import {API} from "../components/config";
 import axios from "axios";
 export default function FormFinish(){
-    const [form,setForm]=useState({});
+    const [form,setForm]=useState({
+        name:"",
+        phone:"",
+        address:""
+    });
     useEffect(()=>{
         
     },[]);
@@ -59,6 +63,11 @@ export default function FormFinish(){
         let message= await res.data;
         localStorage.removeItem("basket");
         localStorage.removeItem("products");
+        setForm({
+            name:"",
+            phone:"",
+            address:""
+        })
     }
     return(
         <Layout>
@@ -67,9 +76,9 @@ export default function FormFinish(){
             <div className="container">
                 <div className="form-block">
 
-                <input onChange={handleChange} placeholder="Nombre" name="name" type="text"/>
-                <input onChange={handleChange} placeholder="Celular" name="phone" type="text"/>
-                <input onChange={handleChange} placeholder="Dirección" name="address" type="text"/>
+                <input value={form.name} onChange={handleChange} placeholder="Nombre" name="name" type="text"/>
+                <input value={form.phone} onChange={handleChange} placeholder="Celular" name="phone" type="text"/>
+                <input value={form.address} onChange={handleChange} placeholder="Dirección" name="address" type="text"/>
             
                 <Link href="/products"  >
                     <button onClick={confirm} >Confirmar compra</button>

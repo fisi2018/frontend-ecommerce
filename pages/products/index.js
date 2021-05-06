@@ -42,12 +42,13 @@ export default function Products({productos}){
                     font-size:2.5rem;
                 }
                 .container-products{
-                    padding:1rem ;
+                    padding:3rem 1rem;
                     background-color:#F6F6F6;
                     width:100%;
-                    justify-content:space-around;
                     display:flex;
                     flex-wrap:wrap;
+                    align-items:center;
+                    justify-content:space-around;
                 }
                 `
                 }</style>
