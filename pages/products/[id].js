@@ -8,6 +8,7 @@ export default function Product({producto}){
     const [id,setId]=useState(null);
     const [sent,setSent]=useState(null);
     const [product,setProduct]=useState({});
+    const [error, setError] = useState(false);
     const [url,setUrl]=useState(`${API}/producto/img/${producto._id}`);
     const [sizes,setSizes]=useState([]);
     useEffect(()=>{
@@ -91,6 +92,12 @@ export default function Product({producto}){
 
     }
     const agregarProducto=()=>{
+        if(!product.size || !product.color){
+            setError(true);
+            setTimeout(()=>setError(false),3000)
+            return;
+        }
+
         if(localStorage.getItem("basket")){
             const num=parseInt( localStorage.getItem("basket"))+1;
             localStorage.setItem("basket",num);
@@ -176,6 +183,7 @@ export default function Product({producto}){
                 </span>
                 <h3>Precio al por mayor: ${producto.priceMayor}</h3>
                 <h4>Precio al por menor: ${producto.priceMenor}</h4>
+                {error && <p>Es necesario que ingrese el color y la talla</p> }
                 <button onClick={agregarProducto} className="button-element">Agregar</button>
                 </aside>
             </div>

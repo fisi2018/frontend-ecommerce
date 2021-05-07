@@ -9,6 +9,7 @@ export default function FormFinish(){
         phone:"",
         address:""
     });
+    const [error, setError] = useState(false)
     useEffect(()=>{
         
     },[]);
@@ -19,6 +20,11 @@ export default function FormFinish(){
         });
     }
     const confirm= async ()=>{
+        if(form.name==="" || form.phone===""){
+            setError(true);
+            setTimeout(()=>setError(false),3000);
+            return;
+        }
         let list=JSON.parse(localStorage.getItem("products"));
         let total=0;
         let array={};
@@ -76,10 +82,10 @@ export default function FormFinish(){
             <div className="container">
                 <div className="form-block">
 
-                <input value={form.name} onChange={handleChange} placeholder="Nombre" name="name" type="text"/>
-                <input value={form.phone} onChange={handleChange} placeholder="Celular" name="phone" type="text"/>
-                <input value={form.address} onChange={handleChange} placeholder="Dirección" name="address" type="text"/>
-            
+                <input value={form.name} onChange={handleChange} placeholder="Nombre" name="name" type="text" required />
+                <input value={form.phone} onChange={handleChange} placeholder="Celular" name="phone" type="text" required/>
+                <input value={form.address} onChange={handleChange} placeholder="Dirección" name="address" type="text" required/>
+            {error && <p>Es necesario rellenar los campos de nombre y celular</p> }
                 <Link href="/products"  >
                     <button onClick={confirm} >Confirmar compra</button>
                     </Link>

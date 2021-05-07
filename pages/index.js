@@ -3,7 +3,7 @@ import Card from "../components/card";
 import {API} from "../components/config";
 
 const axios=require("axios");
-export default function Home({tables}){
+export default function Home({tables,error}){
     return(
         <Layout>
             
@@ -11,6 +11,7 @@ export default function Home({tables}){
             <p>Descubre las últimas novedades y ofertas en nuestras tiendas</p>
             <section>
             {
+                (error)?<p>Ha ocurrido un error</p>:
                 tables.map((table)=>{
                     return(
                         <Card key={table._id} title={table.title} description={table.description}
@@ -51,11 +52,28 @@ export default function Home({tables}){
 }
 export async function getServerSideProps(){
     const url=`${API}/table/tables`;
-    const res= await axios.get(url);
-    const tables= await res.data;
-    return {
-        props:{
-            tables
+    try{
+        const res= await axios.get(url);
+        const tables= await res.data;
+        if(tables.error){
+            return {
+                props:{
+                    error:tables.error
+                }
+            }
+        }else{
+
+            return {
+                props:{
+                    tables
+                }
+        }
+        }
+    }catch(err){
+        return {
+            props:{
+                error:`Ha ocurrido un error ${err}`
+            }
         }
     }
 }

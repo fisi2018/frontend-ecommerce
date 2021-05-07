@@ -1,13 +1,15 @@
 import Layout from "../components/layout";
 import axios from "axios";
 import {API} from "../components/config";
-export default function Contact({users}){
+export default function Contact({users,error}){
     return(
         <Layout>
             <h1>Sección de contactos</h1>
             <p className="sumary">Ponte en contacto con cualquiera de nuestros colaboradores</p>
             <div className="container-users">
-                {users.map((user)=>(
+                {
+                (error)? <p>{error}</p> :
+                users.map((user)=>(
                     <div key={user._id} className={(user.role===1)?`admin`:`worker`} >
                         <p>Nombre: {user.name}</p>
                         <p>Correo: {user.username}</p>
@@ -68,16 +70,23 @@ export async function getServerSideProps(){
         const res= await axios.get(url);
         const users=await res.data;
         if(users.error){
+            return {
+                props:{
+                    error:users.error
+                }
+            }
+        }else{
 
-        }
-        else{
             return {
                 props:{
                     users
                 }
             }
         }
+        
     }catch(err){
-
+        return {
+            error:`Ha ocurrido un error ${err}`
+        }
     }
 }
