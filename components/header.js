@@ -196,7 +196,7 @@ export default function Header(){
         <header>
             <div>
                 <h1>Importadora Fura Ltda</h1>
-                <button onClick={showList}>
+                <button name="products-list" onClick={showList}>
                 <Badge badgeContent={basket} color="error">
 
                 <ShoppingCartIcon  />

@@ -39,10 +39,33 @@ export default function Footer(){
     }
     a{
         color:white;
-        transition:color 0.3s ease;
+        transition:all 0.3s ease;
     }
     a:hover{
         color:#868686;
+    }
+    a:nth-child(1){
+        position:relative;
+    }
+    a:after{
+        transform:translateY(0) translateX(-65%);
+        opacity:0;
+        font-family:"Montserrat";
+        position:absolute;
+        transition:all 0.3s ease;
+    }
+    a:nth-child(1):after{   
+        content:"Facebook";
+    }
+    a:hover:after{
+        opacity:1;
+        transform:translateY(100%) translateX(-65%);
+    }
+    a:nth-child(2):after{
+        content:"Twitter";
+    }
+    a:nth-child(3):after{
+        content:"Instagram";
     }
     `
 }

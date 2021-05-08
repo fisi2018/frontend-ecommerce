@@ -35,6 +35,11 @@ export default function Layout({children}){
         <div>
             <Head>
                 <title>Importadora A&F</title>
+                 <meta charset="utf-8" />
+                 <meta
+  name="description"           
+  content="Importadora Fura Ltda. es una empresa especializada en la venta de 
+  prendas de vestir en cantidades altas como también en cantidades menores, las prendas son de muy alta calidad y el servicio que ofrecemos uno de los mejores"></meta>
                 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
                  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;900&display=swap" rel="stylesheet"/>
             </Head>
