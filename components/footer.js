@@ -41,9 +41,7 @@ export default function Footer(){
         color:white;
         transition:all 0.3s ease;
     }
-    a:hover{
-        color:#868686;
-    }
+    
     a:nth-child(1){
         position:relative;
     }
@@ -66,6 +64,47 @@ export default function Footer(){
     }
     a:nth-child(3):after{
         content:"Instagram";
+    }
+    @media screen and (max-width:640px){
+        a:after{
+            transform:translateY(0) translateX(0);
+        }
+        footer{
+            flex-direction:column;
+            justify-content:unset;
+            padding:0;
+            height:7rem;
+        }
+        a:hover:after{
+        opacity:1;
+        transform:translateY(-100%) translateX(0);
+    }
+        nav{
+            width:100%;
+            padding:0;
+            flex:2;
+            justify-content:unset;
+        }
+        p{
+            flex:1;
+            text-align:center;
+            padding:0.5rem 0.5rem 0 0.5rem;
+        }
+        a{
+            flex:1;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        a:nth-child(1):hover{
+            background-color:#1A73EA;
+        }
+        a:nth-child(2):hover{
+            background-color:#00B0E9;
+        }
+        a:nth-child(3):hover{
+            background:linear-gradient(0deg, #F6CC71, #DC0E89,#5A50A1);
+        }
     }
     `
 }

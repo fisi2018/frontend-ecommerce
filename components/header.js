@@ -196,7 +196,7 @@ export default function Header(){
         <header>
             <div>
                 <h1>Importadora Fura Ltda</h1>
-                <button name="products-list" onClick={showList}>
+                <button aria-label="Shopping car" name="products-list" onClick={showList}>
                 <Badge badgeContent={basket} color="error">
 
                 <ShoppingCartIcon  />
@@ -273,7 +273,6 @@ export default function Header(){
                 .links-list{
                     background-color:#fffc;
                     padding:0;
-
                 }
                 nav{
                     padding:.5rem;
@@ -293,6 +292,17 @@ export default function Header(){
                 }
                 a:hover{
                     background-color:white;
+                }
+                @media screen and (max-width:480px){
+                    div{
+                        padding:1.5rem;
+                        flex-direction:column;
+                        flex-wrap:no-wrap;
+                        justify-content:unset;
+                    }
+                    h1{
+                        padding-bottom:1rem;
+                    }
                 }
                 `
             }</style>
