@@ -114,11 +114,14 @@ export default function Header(){
                             }
                             li{
                                 display:flex;
+                                min-width:640px;
+                                width:100%;
                                 justify-content:space-around;
                                 align-items:center;
                                 list-style:none;
                                 padding:1rem 0.5rem;
                             }
+                            
                             `
                         }
                     </style>
@@ -127,7 +130,10 @@ export default function Header(){
             }
             
             return result=<>
+            <div>
+
             {result}
+            </div>
             <li>
                 <p>Total: ${total}</p>
                 <Link href="/formFinish">
@@ -136,6 +142,7 @@ export default function Header(){
             </li>
             <style jsx>
             {  `
+            
             li{
                 list-style:none;
                 position:relative;
@@ -184,8 +191,33 @@ export default function Header(){
                 border-color:black;
                 height:100%;
             }
-              
+            @media screen and (min-width:481px) and (max-width:640px){
+                li{
+                    justify-content:space-evenly;
+                }
                 
+                p{
+                    position:unset;
+                }
+                div{
+                    overflow-x:scroll;
+                }
+            }     
+            @media screen and (max-width:480px){
+                p{
+                    position:unset;
+                }
+                li{
+                    flex-direction:column;
+                    justify-content:space-evenly;
+                }
+                li>*{
+                    margin:0.5rem;
+                }
+                div{
+                    overflow-x:scroll;
+                }
+            }       
 
             `  }
             </style>
@@ -195,7 +227,7 @@ export default function Header(){
     return(
         <header>
             <div>
-                <h1>Importadora Fura Ltda</h1>
+                <h1>Importadora A&F Ltda</h1>
                 <button aria-label="Shopping car" name="products-list" onClick={showList}>
                 <Badge badgeContent={basket} color="error">
 
@@ -223,13 +255,14 @@ export default function Header(){
                 `
                 aside{
                     position:fixed;
+                    max-height:70%;
                     background-color:white;
                     display:flex;
                     flex-direction:column;
                     transform:translateY(100%);
                     bottom:0;
-                    width:100%;
-                    
+                    right:0;
+                    left:0;    
                     transition: all 0.3s ease;
                 }
                 .is-active{
@@ -300,6 +333,7 @@ export default function Header(){
                         flex-wrap:no-wrap;
                         justify-content:unset;
                     }
+                
                     h1{
                         padding-bottom:1rem;
                     }
