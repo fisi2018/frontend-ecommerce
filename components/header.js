@@ -227,6 +227,7 @@ export default function Header(){
     return(
         <header>
             <div>
+                <img src="/logoGold.jpg" alt="logoModeDark"/>
                 <h1>Importadora A&F Ltda</h1>
                 <button aria-label="Shopping car" name="products-list" onClick={showList}>
                 <Badge badgeContent={basket} color="error">
@@ -272,7 +273,10 @@ export default function Header(){
                 li{
                     background-color:blue;
                 }
-                
+                img{
+                    width:120px;
+                    height:auto;
+                }
                 button{
                     color:white;
                     border:0;
@@ -294,12 +298,14 @@ export default function Header(){
                 h1{
                     color:white;
                     text-align:center;
+                    font-size:3rem;
                     font-weight:200;
                     
                 }
                 div{
-                    padding:2rem;
+                    padding:0.5rem;
                     display:flex;
+                    align-items:center;
                     justify-content:space-around;
                     flex-wrap:wrap;    
                 }
@@ -333,9 +339,13 @@ export default function Header(){
                         flex-wrap:no-wrap;
                         justify-content:unset;
                     }
-                
+                img{
+                    width:75px;
+                    height:auto;
+                }
                     h1{
-                        padding-bottom:1rem;
+                        padding-bottom:0.5rem;
+                        font-size:2rem;
                     }
                 }
                 `
