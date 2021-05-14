@@ -227,7 +227,7 @@ export default function Header(){
     return(
         <header>
             <div>
-                <img src="/logoGold.jpg" alt="logoModeDark"/>
+                <img src="/logoGoldPNG.png" alt="logoModeDark"/>
                 <h1>Importadora A&F Ltda</h1>
                 <button aria-label="Shopping car" name="products-list" onClick={showList}>
                 <Badge badgeContent={basket} color="error">
